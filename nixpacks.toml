@@ -3,7 +3,7 @@ nixPkgs = ['php82', 'php82Extensions.mysqli', 'php82Extensions.pdo', 'php82Exten
 
 [phases.install]
 cmds = [
-  'npm install --legacy-peer-deps',
+  'npm install --force',
   'composer install --no-dev --optimize-autoloader'
 ]
 
