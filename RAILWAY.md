@@ -22,26 +22,35 @@
 
 ### 4. Import ข้อมูลเข้า Database
 
-#### วิธีที่ 1: ใช้ Railway CLI (แนะนำ)
+#### วิธีที่ 1: ใช้ Railway Web UI (ง่ายที่สุด)
+
+1. ไปที่ Railway dashboard
+2. คลิกที่ MySQL service
+3. คลิก **"Connect"** → **"MySQL Shell"**
+4. ใน shell ให้รัน:
+```sql
+CREATE DATABASE newcompany CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE newcompany;
+-- คัดลอกเนื้อหาจาก newcompany.sql และวางที่นี่
+```
+
+#### วิธีที่ 2: ใช้ Railway CLI (ถ้าติดตั้งได้)
 
 ```bash
-# ติดตั้ง Railway CLI
-npm i -g @railway/cli
-
-# Login
-railway login
+# ใช้ npx แทนการติดตั้ง global
+npx @railway/cli login
 
 # Link project
-railway link
+npx @railway/cli link
 
 # เชื่อมต่อกับ MySQL
-railway connect MySQL
+npx @railway/cli connect MySQL
 
 # Import ข้อมูล (ใน MySQL shell)
 source newcompany.sql;
 ```
 
-#### วิธีที่ 2: ใช้ MySQL Client
+#### วิธีที่ 3: ใช้ MySQL Client ภายใน
 
 1. ไปที่ MySQL service ใน Railway
 2. คลิก **"Connect"** → คัดลอก connection string
