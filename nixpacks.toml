@@ -9,3 +9,6 @@ cmds = [
 
 [start]
 cmd = 'php -S 0.0.0.0:$PORT -t .'
+
+[variables]
+PHP_VERSION = "8.2"
