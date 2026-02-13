@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-include config_loader.php";
+include "../config_loader.php";
 include "../users/checklogin.php";
 
 $user_no = $_SESSION["user_no"] ?? null;
@@ -15,12 +15,12 @@ if (empty($user_no)) {
 $search = $_GET["search"] ?? "";
 
 try {
-    $db = new PDO("mysql:host=localhost;dbname=newcompany;charset=utf8", "root", "");
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $stmt = $db->prepare("SELECT module_no, branch_no FROM authorize WHERE user_no = :user_no");
-    $stmt->execute([':user_no' => $user_no]);
-    $authData = $stmt->fetch(PDO::FETCH_ASSOC);
+    // Use connection from config_loader.php
+    $stmt = $conn->prepare("SELECT module_no, branch_no FROM authorize WHERE user_no = ?");
+    $stmt->bind_param("i", $user_no);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $authData = $result->fetch_assoc();
 
     $module_no = $authData['module_no'] ?? null;
     $branch_no = $authData['branch_no'] ?? null;
