@@ -1,0 +1,18 @@
+services:
+  # PHP Application Service
+  - type: web
+    name: scholarship-app
+    runtime: php
+    plan: free
+    buildCommand: "composer install --no-dev --optimize-autoloader"
+    startCommand: "php -S 0.0.0.0:$PORT -t ."
+    healthCheckPath: /health.php
+    envVars:
+      - key: RENDER
+        value: "true"
+    
+  # PostgreSQL Database Service
+  - type: pserv
+    name: mysql-db
+    runtime: postgres
+    plan: free
