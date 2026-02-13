@@ -1,3 +1,8 @@
+<?php
+session_start();
+include "../config.php";
+include "../users/checklogin.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,11 +23,8 @@
 
   <!-- Navbar -->
   <?php
-  session_start();
   // กำหนดค่าเริ่มต้นให้ $userRole เพื่อป้องกัน Warning
   $userRole = isset($_SESSION["role"]) ? $_SESSION["role"] : "admin"; 
-  include "../users/checklogin.php";
-  include "../config.php"; 
   include "../comp/preloader.php";
   include "../comp/navbar.php";
   include "../comp/aside.php";
