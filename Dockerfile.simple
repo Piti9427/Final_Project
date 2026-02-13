@@ -7,18 +7,19 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     zip \
     unzip \
-    libpq-dev \
-    libzip-dev \
-    libzip4
+    libpq-dev
 
-# Install PHP extensions
+# Install PHP extensions (without zip first)
 RUN docker-php-ext-install \
     pdo_mysql \
     pdo_pgsql \
     mysqli \
     mbstring \
-    gd \
-    zip
+    gd
+
+# Install zip extension separately
+RUN apt-get install -y libzip-dev && \
+    docker-php-ext-install zip
 
 # Copy composer and install dependencies
 COPY composer.json composer.lock ./
