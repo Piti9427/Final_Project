@@ -23,11 +23,20 @@ if (file_exists($envFile)) {
 }
 
 // รองรับทั้ง local, Docker, Railway, Render ฯลฯ ผ่าน env / .env
-$servername = getenv('MYSQL_HOST') ?: 'localhost';
-$username   = getenv('MYSQL_USER') ?: 'root';
-$password   = getenv('MYSQL_PASSWORD') ?: '';
-$dbname     = getenv('MYSQL_DATABASE') ?: 'newcompany';
-$port       = (int)(getenv('MYSQL_PORT') ?: 3306);
+<?php
+// ดึงค่าจาก Railway Environment Variables
+$db_host = getenv('MYSQLHOST') ?: 'localhost';
+$db_user = getenv('MYSQLUSER') ?: 'root';
+$db_pass = getenv('MYSQLPASSWORD') ?: '';
+$db_name = getenv('MYSQLDATABASE') ?: 'final_project';
+$db_port = getenv('MYSQLPORT') ?: '3306';
+
+$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name, $db_port);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+?>
 
 // เชื่อมต่อ database
 $conn = @mysqli_connect($servername, $username, $password, $dbname, $port);
