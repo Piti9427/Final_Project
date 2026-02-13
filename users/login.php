@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../config.php"; // เชื่อมต่อฐานข้อมูล
+include config_loader.php"; // เชื่อมต่อฐานข้อมูล
 ?>
 
 <!DOCTYPE html>

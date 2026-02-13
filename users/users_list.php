@@ -92,7 +92,7 @@ include "../users/checkmodule.php"
                   </thead>
                   <tbody>
                   <?php
-                  include "../config.php";
+                  include config_loader.php";
                   $conn = mysqli_connect($servername,$username,
                      $password,$dbname);
                   if(!$conn)

@@ -3,7 +3,7 @@ $module="admin";
 include "../users/checkmodule.php"
 ?>
 <?php
- include "../config.php";
+ include config_loader.php";
  $user_email = $_POST["user_email"];
  $user_name = $_POST["user_name"];
  $user_login = $_POST["user_login"];

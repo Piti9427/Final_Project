@@ -1,5 +1,5 @@
 <?php
-include "../config.php"; // เชื่อมต่อฐานข้อมูล
+include config_loader.php"; // เชื่อมต่อฐานข้อมูล
 
 if (isset($_POST['id'])) {
     $id = intval($_POST['id']); // ป้องกัน SQL Injection

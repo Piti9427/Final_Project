@@ -4,7 +4,7 @@ ini_set('pcre.backtrack_limit', '10000000');
 
 session_start();
 include "../users/checklogin.php";
-include "../config.php";
+include config_loader.php";
 require_once('../vendor/autoload.php');
 
 try {

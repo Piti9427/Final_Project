@@ -1,5 +1,5 @@
 <?php
- include "../config.php";
+ include config_loader.php";
  $user_no = $_POST["user_no"];
  $module_no = $_POST["module_no"];
  $branch_no = $_POST["branch_no"];

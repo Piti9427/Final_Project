@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Database connection
-include "../config.php";   
+include config_loader.php";   
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

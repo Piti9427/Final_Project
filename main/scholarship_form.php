@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_login'])) {
 // ส่วนที่เหลือของโค้ด scholarshipform.php
 $userRole = isset($_SESSION["role"]) ? $_SESSION["role"] : "admin"; 
 // เชื่อมต่อฐานข้อมูล
-include "../config.php";
+include "../config_loader.php";
 // ตรวจสอบว่ามีพารามิเตอร์ id ถูกส่งมาหรือไม่
 if (isset($_GET['id'])) {
     $scholarship_id = $_GET['id'];
@@ -282,7 +282,7 @@ if (isset($_GET['id'])) {
     <label for="branch" class="required-field">สาขาวิชา</label>
         <select onclick="showSuppliers(this.value)" class="form-select" name="user_no" id="user_no">
             <?php
-              include "../config.php";
+              include "../config_loader.php";
             $conn = mysqli_connect($servername, $username, $password, $dbname);
             if (!$conn) { die("Error ".mysqli_connect_error()); }
             

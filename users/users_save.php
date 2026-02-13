@@ -17,7 +17,7 @@ else
 }
 ?>
 <?php
- include "../config.php";
+ include config_loader.php";
  $old_user_no = $_POST["old_user_no"];
  $user_email = $_POST["user_email"];
  $user_name = $_POST["user_name"];

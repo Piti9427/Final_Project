@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "../users/checklogin.php";
-include "../config.php"; 
+include config_loader.php"; 
 include "../comp/aside.php";
 
 // ✅ รับค่า scholarship_id จาก URL

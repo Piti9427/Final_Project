@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php'; // โหลด mPDF
-include "../config.php";    
+include config_loader.php";    
 include "../users/checklogin.php"; 
 
 session_start();

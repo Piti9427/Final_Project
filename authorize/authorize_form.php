@@ -83,7 +83,7 @@ include "../users/checkmodule.php"
                       <div class="col-md-8">
                          <div class="form-group">
                             <?php
-                            include "../config.php";
+                            include config_loader.php";
                             $conn = mysqli_connect($servername,$username,
                                 $password,$dbname);
                             if(!$conn)

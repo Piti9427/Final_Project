@@ -2,7 +2,7 @@
 <?php
 session_start();
 include "../users/checklogin.php";
-include "../config.php"; // Include database connection
+include config_loader.php"; // Include database connection
 
 // Get scholarship ID from URL
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;

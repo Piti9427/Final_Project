@@ -2,7 +2,7 @@
 $module = "admin";
 include "../users/checkmodule.php"; // Added missing semicolon
 
-include "../config.php";
+include config_loader.php";
 
 // Sanitize input
 $user_no = $_GET["user_no"] ?? "";

@@ -2,7 +2,7 @@
 <?php
 session_start();
 include "../users/checklogin.php";
-include "../config.php";
+include config_loader.php";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8mb4", $username, $password);

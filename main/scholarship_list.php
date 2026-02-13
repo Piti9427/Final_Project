@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-include "../config.php";
+include config_loader.php";
 include "../users/checklogin.php";
 
 $user_no = $_SESSION["user_no"] ?? null;

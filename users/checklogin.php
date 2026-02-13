@@ -1,7 +1,7 @@
 <?php
   function checkuser($user_login,$module_no)
   {
-  include "../config.php"; 
+  include "config_loader.php"; 
    $con = mysqli_connect($servername,$username,$password,$dbname);
                   if(mysqli_connect_errno()) 
                     { echo "Fail to connect to MySQL"; exit();

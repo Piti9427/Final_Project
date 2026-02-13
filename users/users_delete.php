@@ -1,7 +1,7 @@
 <?php 
 include "../main/session.php"; 
 include "../users/checklogin.php";
-include "../config.php"; 
+include config_loader.php"; 
 
 if(isset($_SESSION['user_login']))
 {

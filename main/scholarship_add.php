@@ -5,7 +5,7 @@ include "../users/checklogin.php";
 // Process form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Database connection
-    include "../config.php"; // Adjust this to your actual database connection file
+    include config_loader.php"; // Adjust this to your actual database connection file
     
     // Get form data
     $title = $_POST['title'];

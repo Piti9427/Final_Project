@@ -3,7 +3,7 @@ session_start();
 include "../users/checklogin.php";
 
 // Database connection
-include "../config.php"; // Adjust this to your actual database connection file
+include config_loader.php"; // Adjust this to your actual database connection file
 
 // Fetch scholarship data
 $id = isset($_GET['id']) ? $_GET['id'] : 0;

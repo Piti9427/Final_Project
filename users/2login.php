@@ -1,6 +1,6 @@
 <?php
   session_start();
-  include "../config.php"; 
+  include "config_loader.php"; 
   $login = $_POST['login'];
   $pwd = $_POST['password'];
   $pwd=md5($pwd);
