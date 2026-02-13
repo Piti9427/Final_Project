@@ -1,0 +1,14 @@
+services:
+  # PHP Application Service
+  - type: web
+    name: scholarship-app
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health.php
+    
+  # MySQL Database Service
+  - type: pserv
+    name: mysql-db
+    runtime: mysql
+    plan: free
+    healthCheckPath: /health

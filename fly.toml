@@ -1,0 +1,24 @@
+app = "scholarship-app"
+
+[build]
+  builder = "heroku/buildpacks:20"
+
+[env]
+  PORT = "8080"
+
+[[services]]
+  protocol = "tcp"
+  internal_port = 8080
+
+[http_service]
+  internal_port = 8080
+  protocol = "tcp"
+
+[checks]
+  [checks.alive]
+    grace_period = "10s"
+    interval = "15s"
+    method = "get"
+    path = "/health.php"
+    protocol = "http"
+    timeout = "2s"

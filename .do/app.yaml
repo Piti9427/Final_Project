@@ -1,0 +1,15 @@
+name: scholarship-app
+services:
+- name: web
+  source_dir: /
+  github:
+    repo: Piti9427/Final_Project
+    branch: main
+  run_command: php -S 0.0.0.0:$PORT -t .
+  environment_slug: php
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  http_port: 8080
+  routes:
+  - path: /
+  - preserve_path_prefix: false
