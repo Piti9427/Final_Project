@@ -4,7 +4,7 @@ session_start();
 include config_loader.php";   
 
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn = // Use connection from config_loader.php", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     function generateUniqueFilename($directory, $filename) {

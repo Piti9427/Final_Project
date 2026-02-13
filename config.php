@@ -26,14 +26,15 @@ if (file_exists($envFile)) {
     }
 }
 
-// --- Railway MySQL environment variables ---
-$host = getenv('MYSQLHOST') ?: 'localhost';
-$user = getenv('MYSQLUSER') ?: 'root';
-$pass = getenv('MYSQLPASSWORD') ?: '';
-$db   = getenv('MYSQLDATABASE') ?: 'final_project';
-$port = getenv('MYSQLPORT') ?: '3306';
+// --- Railway MySQL environment variables (รองรับทั้งแบบมี underscore และไม่มี) ---
+$db_host = getenv('MYSQL_HOST') ?: getenv('MYSQLHOST') ?: 'localhost';
+$db_user = getenv('MYSQL_USER') ?: getenv('MYSQLUSER') ?: 'root';
+$db_pass = getenv('MYSQL_PASSWORD') ?: getenv('MYSQLPASSWORD') ?: '';
+$db_name = getenv('MYSQL_DATABASE') ?: getenv('MYSQLDATABASE') ?: 'newcompany';
+$db_port = getenv('MYSQL_PORT') ?: getenv('MYSQLPORT') ?: '3306';
 
-$conn = mysqli_connect($host, $user, $pass, $db, (int)$port);
+$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name, $db_port);
+
 if (!$conn) {
     $err = mysqli_connect_error();
     error_log("Database connection failed: {$err} | Host={$host} User={$user} DB={$db} Port={$port}");

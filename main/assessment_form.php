@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "../users/checklogin.php";
-include config_loader.php"; 
+include "../config_loader.php"; 
 include "../comp/aside.php";
 
 // ✅ รับค่า scholarship_id จาก URL
@@ -13,11 +13,7 @@ if (!$scholarship_id || $scholarship_id <= 0) {
 }
 
 try {
-    // ✅ เชื่อมต่อฐานข้อมูล
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8mb4", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // ✅ ดึงข้อมูลล่าสุดจาก scholarship_applications
+    // ✅ เชื่อมต่อฐานข้อมูล (ใช้ connection จาก config_loader.php)
     $sql = "SELECT id AS application_primary_id, 
                    parent_allowance_amount, other_allowance_amount, 
                    loan_amount, extra_income_daily, food_expense_daily, accommodation_expense, 
@@ -27,14 +23,15 @@ try {
                    landstatus, landstatus1, landstatus2, landstatus3, landstatus4, landstatus5, landstatus6,
                    sibling_currently_children, describe_scholarship
             FROM scholarship_applications
-            WHERE scholarship_id = :scholarship_id
+            WHERE scholarship_id = ?
             ORDER BY id DESC
             LIMIT 1";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':scholarship_id', $scholarship_id, PDO::PARAM_INT);
+    $stmt->bind_param("i", $scholarship_id);
     $stmt->execute();
-    $row = $stmt->fetch(PDO::FETCH_ASSOC); // ✅ ใช้ fetch() ดึงข้อมูลแค่ 1 แถว
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
 
     if ($row) {
         // ✅ กำหนดค่าที่ต้องการ

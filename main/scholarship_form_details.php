@@ -5,7 +5,7 @@ include "../users/checklogin.php";
 include config_loader.php";
 
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8mb4", $username, $password);
+    $conn = // Use connection from config_loader.php;charset=utf8mb4", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
     // รับค่า scholarship_id และ applicant_id จาก URL

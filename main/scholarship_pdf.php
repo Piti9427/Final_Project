@@ -8,7 +8,7 @@ include config_loader.php";
 require_once('../vendor/autoload.php');
 
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8mb4", $username, $password);
+    $conn = // Use connection from config_loader.php;charset=utf8mb4", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
     $scholarship_id = filter_input(INPUT_GET, 'scholarship_id', FILTER_VALIDATE_INT);
