@@ -30,12 +30,8 @@ COPY . .
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html
 
-# Configure Apache to listen on PORT
-RUN sed -i 's/80/${PORT}/g' /etc/apache2/sites-available/000-default.conf
-RUN sed -i 's/Listen 80/Listen ${PORT}/g' /etc/apache2/ports.conf
-
-# Expose port (will be set by Render)
+# Railway injects $PORT at runtime. Apache config does NOT expand env vars at build time,
+# so patch the config on container start.
 EXPOSE 80
 
-# Start Apache with environment variable
-CMD ["sh", "-c", "echo \"Listen ${PORT}\" >> /etc/apache2/ports.conf && apache2-foreground"]
+CMD ["sh", "-c", "set -e; : ${PORT:=80}; sed -i \"s/^Listen 80$/Listen ${PORT}/\" /etc/apache2/ports.conf; sed -i \"s/<VirtualHost \\*:80>/<VirtualHost \\*:${PORT}>/\" /etc/apache2/sites-available/000-default.conf; apache2-foreground"]
