@@ -14,9 +14,8 @@ if (isset($data['id']) && isset($data['status'])) {
     $status = $data['status'];
     
     try {
-    include '../config_loader.php';
-    
-    try {
+        include '../config_loader.php';
+        
         // Connect to database if not already connected by config_loader
         if (!isset($db) && !isset($conn)) {
              try {
