@@ -1,10 +1,10 @@
 <?php
 // Production config for Railway.app
-$servername = getenv('DB_HOST') ?: 'localhost';
-$username = getenv('DB_USER') ?: 'root';
-$password = getenv('DB_PASSWORD') ?: '';
-$database = getenv('DB_NAME') ?: 'newcompany';
-$port = getenv('DB_PORT') ?: '3306';
+$servername = getenv('MYSQL_HOST') ?: getenv('MYSQLHOST') ?: getenv('DB_HOST') ?: 'localhost';
+$username = getenv('MYSQL_USER') ?: getenv('MYSQLUSER') ?: getenv('DB_USER') ?: 'root';
+$password = getenv('MYSQL_PASSWORD') ?: getenv('MYSQLPASSWORD') ?: getenv('DB_PASSWORD') ?: '';
+$database = getenv('MYSQL_DATABASE') ?: getenv('MYSQLDATABASE') ?: getenv('DB_NAME') ?: 'newcompany';
+$port = getenv('MYSQL_PORT') ?: getenv('MYSQLPORT') ?: getenv('DB_PORT') ?: '3306';
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database, $port);

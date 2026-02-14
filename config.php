@@ -37,7 +37,7 @@ $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name, $db_port);
 
 if (!$conn) {
     $err = mysqli_connect_error();
-    error_log("Database connection failed: {$err} | Host={$host} User={$user} DB={$db} Port={$port}");
+    error_log("Database connection failed: {$err} | Host={$db_host} User={$db_user} DB={$db_name} Port={$db_port}");
     die('Database connection failed.');
 }
 

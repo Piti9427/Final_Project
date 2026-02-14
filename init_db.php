@@ -1,6 +1,6 @@
 <?php
 // Database initialization for Railway.app
-include 'config_production.php';
+include 'config_loader.php';
 
 // Read SQL file
 $sql = file_get_contents('newcompany.sql');
