@@ -27,11 +27,8 @@ RUN composer update --no-dev --optimize-autoloader
 # Copy application code
 COPY . .
 
-# Create startup script
-RUN echo '#!/bin/bash' > /start.sh && \
-    echo 'echo "Starting PHP server on port ${PORT:-8080}"' >> /start.sh && \
-    echo 'php -S 0.0.0.0:${PORT:-8080} -t .' >> /start.sh && \
-    chmod +x /start.sh
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
 
 # Start script
 CMD ["/start.sh"]
