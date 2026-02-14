@@ -93,14 +93,6 @@ class FontVariables
 			 */
 
 			'fontdata' => [
-				"sarabun" => [
-					'R' => "THSarabunNew.ttf",
-					'B' => "THSarabunNew Bold.ttf",
-					'I' => "THSarabunNew Italic.ttf",
-					'BI' => "THSarabunNew BoldItalic.ttf",
-					'useOTL' => 0x00,
-					'useKashida' => 75,
-				],
 				"dejavusanscondensed" => [
 					'R' => "DejaVuSansCondensed.ttf",
 					'B' => "DejaVuSansCondensed-Bold.ttf",
@@ -109,7 +101,6 @@ class FontVariables
 					'useOTL' => 0xFF,
 					'useKashida' => 75,
 				],
-
 				"dejavusans" => [
 					'R' => "DejaVuSans.ttf",
 					'B' => "DejaVuSans-Bold.ttf",
@@ -207,7 +198,7 @@ class FontVariables
 					'useOTL' => 0xFF,
 				],
 				"eeyekunicode" => [/* Meetei Mayek */
-					'R' => "Eeyek.ttf",
+					'R' => "Eeyek-Regular.ttf",
 				],
 				"lannaalif" => [/* Tai Tham */
 					'R' => "lannaalif-v1-03.ttf",
