@@ -14,9 +14,26 @@ if (isset($data['id']) && isset($data['status'])) {
     $status = $data['status'];
     
     try {
-        // Connect to database
-        $db = new PDO("mysql:host=localhost;dbname=newcompany;charset=utf8", "root", "");
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    include '../config_loader.php';
+    
+    try {
+        // Connect to database if not already connected by config_loader
+        if (!isset($db) && !isset($conn)) {
+             try {
+                $dsn = "mysql:host=$servername;dbname=$dbname;port=$port;charset=utf8";
+                $db = new PDO($dsn, $username, $password);
+                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+             } catch (PDOException $e) {
+                // Try using $conn if $db failed or wasn't set, might be mysqli from config
+                if (isset($conn) && $conn instanceof PDO) {
+                    $db = $conn;
+                } else {
+                    throw $e;
+                }
+             }
+        } elseif (isset($conn) && $conn instanceof PDO) {
+             $db = $conn;
+        }
         
         // Make sure to use the correct field name from your database schema
         // If your field is named 'status' in the database:

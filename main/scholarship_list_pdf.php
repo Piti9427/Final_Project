@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php'; // โหลด mPDF
-include config_loader.php";    
+include 'config_loader.php';
 include "../users/checklogin.php"; 
 
 session_start();
@@ -16,8 +16,16 @@ if (!$user_no) {
 $search = isset($_GET["search"]) ? $_GET["search"] : "";
 
 try {
-    $db = new PDO("mysql:host=localhost;dbname=newcompany;charset=utf8", "root", "");
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // config_loader.php is already included above
+    if (!isset($db)) {
+        if (isset($conn) && $conn instanceof PDO) {
+            $db = $conn;
+        } else {
+            $dsn = "mysql:host=$servername;dbname=$dbname;port=$port;charset=utf8";
+            $db = new PDO($dsn, $username, $password);
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+    }
 
     // ตรวจสอบ role ของ user
     $stmt = $db->prepare("SELECT module_no, branch_no FROM authorize WHERE user_no = :user_no");

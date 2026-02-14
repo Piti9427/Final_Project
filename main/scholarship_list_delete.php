@@ -1,9 +1,13 @@
 <?php
 if(isset($_GET['id'])) {
     $id = intval($_GET['id']); // แปลงให้เป็นตัวเลขเพื่อความปลอดภัย
+    include '../config_loader.php'; 
     try {
-        $conn = new PDO("mysql:host=localhost;dbname=newcompany;charset=utf8", "root", "");
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        if (!isset($conn)) {
+            $dsn = "mysql:host=$servername;dbname=$dbname;port=$port;charset=utf8";
+            $conn = new PDO($dsn, $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
 
         // ตรวจสอบว่า ID มีอยู่ในฐานข้อมูลจริงหรือไม่
         $checkStmt = $conn->prepare("SELECT * FROM scholarship_applications WHERE id = :id");

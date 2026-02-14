@@ -4,7 +4,9 @@ $servername = getenv('MYSQL_HOST') ?: getenv('DB_HOST') ?: 'localhost';
 $username   = getenv('MYSQL_USER') ?: getenv('DB_USER') ?: 'root';
 $password   = getenv('MYSQL_PASSWORD') ?: getenv('DB_PASSWORD') ?: '';
 $dbname     = getenv('MYSQL_DATABASE') ?: getenv('DB_NAME') ?: 'newcompany';
+$database   = $dbname;
 $port       = (int)(getenv('MYSQL_PORT') ?: getenv('DB_PORT') ?: 3306);
+
 
 // เชื่อมต่อ MySQL/MariaDB
 $conn = @mysqli_connect($servername, $username, $password, $dbname, $port);

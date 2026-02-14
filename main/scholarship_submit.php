@@ -1,10 +1,11 @@
 <?php
 session_start();
 // Database connection
-include config_loader.php";   
+include 'config_loader.php';
 
 try {
-    $conn = // Use connection from config_loader.php", $username, $password);
+    // Connection is already established in config_loader.php or will be handled below if missing
+    // $conn = ... (removed hardcoded connection)
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     function generateUniqueFilename($directory, $filename) {
@@ -614,8 +615,9 @@ try {
         
         
     ];
+
     // ตรวจสอบและสร้างโฟลเดอร์ log หากไม่มี
-    $logDir = 'C:/xampp/htdocs/newcompany/log';
+    $logDir = __DIR__ . '/../log';
     if (!is_dir($logDir)) {
         mkdir($logDir, 0777, true); // สร้างโฟลเดอร์พร้อมกำหนดสิทธิ์
     }
