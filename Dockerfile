@@ -34,4 +34,7 @@ RUN chown -R www-data:www-data /var/www/html
 # so patch the config on container start.
 EXPOSE 80
 
-CMD ["sh -c 'php -S 0.0.0.0:${PORT} -t .'"]
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
+CMD ["/start.sh"]

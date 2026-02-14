@@ -31,4 +31,4 @@ COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
 # Start script
-CMD php -S 0.0.0.0:8080 -t .
+CMD ["/start.sh"]
