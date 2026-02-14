@@ -3,7 +3,7 @@
         'name' => 'piti9427/recalc-engine',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '5b7c40bf127a40058cf75889bc49baa221aefb65',
+        'reference' => 'ace54644214e599c249245c7b872f7f3adac2f9f',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -58,7 +58,7 @@
         'piti9427/recalc-engine' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '5b7c40bf127a40058cf75889bc49baa221aefb65',
+            'reference' => 'ace54644214e599c249245c7b872f7f3adac2f9f',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
